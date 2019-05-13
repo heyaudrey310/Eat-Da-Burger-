@@ -1,5 +1,7 @@
+var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+
 
 var PORT = process.env.PORT || 8080;
 
@@ -15,7 +17,7 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app);
+require("./routes/controller")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
