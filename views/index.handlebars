@@ -1,0 +1,49 @@
+<h1>Add a Burger!</h1>
+
+<div class= "image-container">
+    <img src= "../assets/burger.jpg" width="250" height="250">
+</div>
+
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="burg">Burger:</label>
+    <input type="text" id="burg" name="burger_name">
+  </div>
+
+  <div class="form-group">
+    <label for="devoured">Devoured?</label><br>
+      
+    <input type="radio" name="devoured" value="0" checked>Needs to be Devoured!
+    <br>
+    <input type="radio" name="devoured" value="1">Devoured!
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
+
+<h1>Burgers!</h1>
+
+<h2>Burgers waiting TO BE DEVOURED</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      <p>{{id}}. {{burger_name}}
+        <span><button class="change-devour" data-id="{{id}}" data-newdevour=true>
+          {{#if devoured}}devoured!{{else}}devour me!{{/if}}
+        </button></span>
+      </p>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>DEVOURED Burgers</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      <p>{{id}}. {{burger_name}}</p>
+    {{/if}}
+  {{/each}}
+</ul>
