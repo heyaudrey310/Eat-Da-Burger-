@@ -1,6 +1,11 @@
 body    {
     background-color: orange;
 }
+h1, h2  {
+    font-display: center;
+    color: royalblue;
+    font-size: 50px;
+}
 .image-container    {
     float: center;
     position: absolute;
