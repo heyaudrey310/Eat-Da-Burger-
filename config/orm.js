@@ -1,4 +1,4 @@
-var connection = require("../config/connection.js");
+var connection = require("./connection.js");
 
 //code borrowed from Activity 17-CatsApp
 
@@ -17,51 +17,23 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
-// Helper function to convert object key/value pairs to SQL syntax
-function objToSql(ob) {
-  var arr = [];
-
-  // loop through the keys and push the key/value as a string int arr
-  for (var key in ob) {
-    var value = ob[key];
-    // check to skip hidden properties
-    if (Object.hasOwnProperty.call(ob, key)) {
-      // if string with spaces, add quotations (Cheese Burg => 'Cheese Burg')
-      if (typeof value === "string" && value.indexOf(" ") >= 0) {
-        value = "'" + value + "'";
-      }
-      // e.g. {burger_name: 'Cheese Burg'} => ["burger_name='Cheese Burg'"]
-      // e.g. {devoured: true} => ["devoured=true"]
-      arr.push(key + "=" + value);
-    }
-  }
-
-  // translate array of strings to a single comma-separated string
-  return arr.toString();
-}
-
-///////////////end functions/////////////////////
 
 // Object for all our SQL statement functions.
 var orm = {
   //selectAll()
-  selectAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
-      if (err) {
+  selectAll: function (tableInput, cb) {
+
+    connection.query("SELECT * FROM burgers", function (err, result) {
+      if (err)
         throw err;
-      }
-      cb(result); //do something with the returned sql query result
+      return result;
+
+
     });
   },
 
-/*
-cb = function(res) {
-      cb(res); //second layer function
-    }*/
 
-  //insertOne()
-  insertOne: function(table, cols, vals, cb) {
+  insertOne: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -73,17 +45,18 @@ cb = function(res) {
 
     console.log(queryString);
 
-    connection.query(queryString, vals, function(err, result) {
-      if (err) {
+    connection.query(queryString, vals, function (err, result) {
+      if (err) 
         throw err;
-      }
+        return result;
+      
 
-      cb(result); //do something with the returned sql query result
+      
     });
   },
   //updateOne()
   // An example of objColVals would be {burger_name: delicious, devoured: true}
-  updateOne: function(table, objColVals, condition, cb) {
+  updateOne: function (table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -92,12 +65,13 @@ cb = function(res) {
     queryString += condition;
 
     console.log(queryString);
-    connection.query(queryString, function(err, result) {
-      if (err) {
+    connection.query(queryString, function (err, result) {
+      if (err) 
         throw err;
-      }
+        return result;
+      
 
-      cb(result); //do something with the returned sql query result
+    
     });
   }
 };
