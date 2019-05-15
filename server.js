@@ -12,8 +12,9 @@ var PORT = process.env.PORT || 8080;
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
-// Parse application body as JSON
+// Parse application body as bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
