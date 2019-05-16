@@ -1,23 +1,30 @@
 body    {
     background-color: orange;
+    margin-top: 20px;
 }
-h1, h2  {
+h1, h2, h3, h4, h5  {
     font-display: center;
     color: royalblue;
     font-size: 50px;
 }
-.image-container    {
+/* .image   {
     float: center;
     position: absolute;
     margin-top: 20px;
-}
-.label  {
-    font-weight: bold;
-}
-.create-form    {
-    padding: 5px;
-    margin: 5px;
-}
-.form-group {
-    margin-bottom: 5px;
-}
+    background-blend-mode: darken;
+} */
+
+/* .submit {
+    background-color: royalblue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  } */
+ 
+  
